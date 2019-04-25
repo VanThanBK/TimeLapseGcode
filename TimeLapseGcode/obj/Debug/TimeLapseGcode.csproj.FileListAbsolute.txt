@@ -1,0 +1,10 @@
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\bin\Debug\TimeLapseGcode.exe.config
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\bin\Debug\TimeLapseGcode.exe
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\bin\Debug\TimeLapseGcode.pdb
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.csprojAssemblyReference.cache
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.Properties.Resources.resources
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.csproj.GenerateResource.cache
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.csproj.CoreCompileInputs.cache
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.exe
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.pdb
+E:\Visual_Projects\TimeLapseGcode\TimeLapseGcode\obj\Debug\TimeLapseGcode.TimeLapse.resources
