@@ -112,6 +112,7 @@ namespace TimeLapseGcode
                     string gcodebuffer = "G1" + " " + "F" + RetractionSpeed + " " + "E" + sextruderDistance + "\n";
                     gcodebuffer = gcodebuffer + "G1" + " " + "F" + FeedRate + " " + "X" + HeadX + " " + "Y" + HeadY + " " + "\n";
                     gcodebuffer = gcodebuffer + "M400" + "\n";
+                    gcodebuffer = gcodebuffer + "M240" + "\n";
                     gcodebuffer = gcodebuffer + "G4" + " " + "P" + TimeDelay + "\n";
 
                     Lines[i] = gcodebuffer + Lines[i];

@@ -152,7 +152,7 @@
             this.textBoxHeadY.Name = "textBoxHeadY";
             this.textBoxHeadY.Size = new System.Drawing.Size(100, 20);
             this.textBoxHeadY.TabIndex = 9;
-            this.textBoxHeadY.Text = "317";
+            this.textBoxHeadY.Text = "310";
             // 
             // textBoxFeedRate
             // 
@@ -160,7 +160,7 @@
             this.textBoxFeedRate.Name = "textBoxFeedRate";
             this.textBoxFeedRate.Size = new System.Drawing.Size(100, 20);
             this.textBoxFeedRate.TabIndex = 10;
-            this.textBoxFeedRate.Text = "6000";
+            this.textBoxFeedRate.Text = "5000";
             // 
             // labelFeedRate
             // 
