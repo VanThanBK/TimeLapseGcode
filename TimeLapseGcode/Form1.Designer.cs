@@ -79,7 +79,7 @@
             this.textBoxDistance.Name = "textBoxDistance";
             this.textBoxDistance.Size = new System.Drawing.Size(100, 20);
             this.textBoxDistance.TabIndex = 1;
-            this.textBoxDistance.Text = "6.5";
+            this.textBoxDistance.Text = "6";
             // 
             // labelRetractionDistance
             // 
@@ -152,7 +152,7 @@
             this.textBoxHeadY.Name = "textBoxHeadY";
             this.textBoxHeadY.Size = new System.Drawing.Size(100, 20);
             this.textBoxHeadY.TabIndex = 9;
-            this.textBoxHeadY.Text = "310";
+            this.textBoxHeadY.Text = "280";
             // 
             // textBoxFeedRate
             // 
@@ -274,7 +274,7 @@
             this.textBoxTimeDelay.Name = "textBoxTimeDelay";
             this.textBoxTimeDelay.Size = new System.Drawing.Size(100, 20);
             this.textBoxTimeDelay.TabIndex = 23;
-            this.textBoxTimeDelay.Text = "3000";
+            this.textBoxTimeDelay.Text = "3500";
             // 
             // label2
             // 

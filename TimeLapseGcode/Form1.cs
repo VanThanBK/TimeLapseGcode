@@ -81,7 +81,7 @@ namespace TimeLapseGcode
 
                     LastIndex = LayerNumber;
 
-                    for (int j = i - 1; j > i - 10; j--)
+                    for (int j = i - 1; j > i - 200; j--)
                     {
                         if (Lines[j].Contains("G1") == true && Lines[j].Contains("E") == true)
                         {
@@ -105,29 +105,34 @@ namespace TimeLapseGcode
                         }
                     }
 
+                    String lineG0 = "";
+
+                    for (int j = i - 1; j > i - 200; j--)
+                    {
+                        if (Lines[j].Contains("G0") == true)
+                        {
+                            lineG0 = Lines[j];
+                            break;
+                        }
+                    }
+
                     float extruderDistance = ExtruderDisTance - RetractionDistanceFloat;
                     string sextruderDistance = extruderDistance.ToString();
                     sextruderDistance = sextruderDistance.Replace(",", ".");
 
                     string gcodebuffer = "G1" + " " + "F" + RetractionSpeed + " " + "E" + sextruderDistance + "\n";
-                    gcodebuffer = gcodebuffer + "G1" + " " + "F" + FeedRate + " " + "X" + HeadX + " " + "Y" + HeadY + " " + "\n";
+                    gcodebuffer = gcodebuffer + "G0" + " " + "F" + FeedRate + " " + "X" + HeadX + " " + "Y" + HeadY + " " + "\n";
                     gcodebuffer = gcodebuffer + "M400" + "\n";
                     gcodebuffer = gcodebuffer + "M240" + "\n";
                     gcodebuffer = gcodebuffer + "G4" + " " + "P" + TimeDelay + "\n";
+                    gcodebuffer = gcodebuffer + lineG0;
 
-                    Lines[i] = gcodebuffer + Lines[i];
+                    sextruderDistance = ExtruderDisTance.ToString();
+                    sextruderDistance = sextruderDistance.Replace(",", ".");
 
-                    for (int j = i + 1; j < i + 5; j++)
-                    {
-                        if (Lines[j].Contains("G0") == true)
-                        {
-                            sextruderDistance = ExtruderDisTance.ToString();
-                            sextruderDistance = sextruderDistance.Replace(",", ".");
+                    gcodebuffer = gcodebuffer + "\n" + "G1" + " " + "F" + RetractionSpeed + " " + "E" + sextruderDistance + "\n";
 
-                            Lines[j] = Lines[j] + "\n" + "G1" + " " + "F" + RetractionSpeed + " " + "E" + sextruderDistance;
-                            break;
-                        }
-                    }                 
+                    Lines[i] = gcodebuffer + Lines[i];                
                 }
                 Invoke(new Action(() =>
                 {
@@ -146,6 +151,8 @@ namespace TimeLapseGcode
 
         private void OpenFileClick(object sender, EventArgs e)
         {
+            FilePath = "";
+            FileGcode = "";
             progressBarInsertFile.Value = 0;
             labelfilePath.Text = " ";
 
@@ -205,7 +212,12 @@ namespace TimeLapseGcode
             string[] snumberfloat = RetractionDistance.Split('.');
 
             float numfloat = float.Parse(snumberfloat[0]);
-            float numfloat1 = float.Parse(snumberfloat[1]);
+            float numfloat1 = 0;
+
+            if (snumberfloat.Length > 1)
+            {
+                numfloat1 = float.Parse(snumberfloat[1]);
+            }
 
             while (numfloat1 > 1)
             {
