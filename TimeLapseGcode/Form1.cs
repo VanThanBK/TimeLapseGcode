@@ -149,6 +149,89 @@ namespace TimeLapseGcode
             MessageBox.Show("Save Done!", "Thông báo");
         }
 
+        private void ConvertFileToSD()
+        {
+            Invoke(new Action(() =>
+            {
+                progressBarInsertFile.Maximum = Lines.Length;
+                progressBarInsertFile.Value = 0;
+            }));
+
+            long indexN = 0;
+
+            Lines[0] = "N-1 M110*15" + "\n" + Lines[0];
+
+            for (int i = 0; i < Lines.Length; i++)
+            {
+                Lines[i] = Lines[i].Replace("\r", "");
+
+                if (Lines[i] == null) continue;
+
+                char[] charBuffer = Lines[i].ToCharArray();
+
+                if (charBuffer.Length == 0)
+                {
+                    continue;
+                }
+
+                if (charBuffer[0] == ';')
+                {
+                    continue;
+                }
+
+                Lines[i] = "N" + indexN.ToString() + " " + Lines[i];
+                indexN++;
+
+                charBuffer = Lines[i].ToCharArray();
+
+                int checkSum = 0 ;
+                int numberArray = 0;
+
+                if (Lines[i].Contains(";") == true)
+                {
+                    numberArray = Lines[i].IndexOf(";") - 1;
+                }
+                else
+                {
+                    numberArray = charBuffer.Length;
+                }
+
+                for (int j = 0; j < numberArray; j++)
+                {
+                    //if (charBuffer[j] == ' ') continue;
+                    checkSum = checkSum ^ charBuffer[j];
+                }
+                checkSum &= 0xff;
+
+                string gCode = "";
+
+                if(Lines[i].Contains(";") == true)
+                {
+                    gCode = Lines[i].Substring(0, Lines[i].IndexOf(";") - 1);
+                    gCode = gCode + "*" + checkSum.ToString();
+                }
+                else
+                {
+                    gCode = Lines[i] + "*" + checkSum.ToString();
+                }
+
+                Lines[i] = gCode;
+
+                Invoke(new Action(() =>
+                {
+                    progressBarInsertFile.Value = i;
+                }));
+            }
+
+            File.WriteAllLines(FilePath, Lines);
+            Invoke(new Action(() =>
+            {
+                buttonOpenFile.Enabled = true;
+            }));
+
+            MessageBox.Show("Convert Done!", "Thông báo");
+        }
+
         private void OpenFileClick(object sender, EventArgs e)
         {
             FilePath = "";
@@ -249,6 +332,13 @@ namespace TimeLapseGcode
         private void FormLoad(object sender, EventArgs e)
         {
             OpenFile.Filter = "gcode files (*.gcode)|*.gcode|All files (*.*)|*.*";
+        }
+
+        private void SentFileToSDCard(object sender, EventArgs e)
+        {
+            buttonOpenFile.Enabled = false;
+            Thread threadConvert = new Thread(ConvertFileToSD);
+            threadConvert.Start();
         }
     }
 }

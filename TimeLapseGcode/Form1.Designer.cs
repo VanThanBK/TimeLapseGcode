@@ -58,6 +58,7 @@
             this.textBoxLayer = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkBoxEnableRetraction
@@ -219,7 +220,7 @@
             // buttonInsert
             // 
             this.buttonInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonInsert.Location = new System.Drawing.Point(182, 272);
+            this.buttonInsert.Location = new System.Drawing.Point(94, 272);
             this.buttonInsert.Name = "buttonInsert";
             this.buttonInsert.Size = new System.Drawing.Size(75, 33);
             this.buttonInsert.TabIndex = 17;
@@ -230,7 +231,7 @@
             // buttonOpenFile
             // 
             this.buttonOpenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOpenFile.Location = new System.Drawing.Point(29, 272);
+            this.buttonOpenFile.Location = new System.Drawing.Point(3, 272);
             this.buttonOpenFile.Name = "buttonOpenFile";
             this.buttonOpenFile.Size = new System.Drawing.Size(85, 33);
             this.buttonOpenFile.TabIndex = 18;
@@ -318,12 +319,24 @@
             this.label4.TabIndex = 28;
             this.label4.Text = "layer";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(175, 272);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 33);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "UploadFileSd";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.SentFileToSDCard);
+            // 
             // TimeLapse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(292, 359);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxLayer);
@@ -393,6 +406,7 @@
         private System.Windows.Forms.TextBox textBoxLayer;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 
